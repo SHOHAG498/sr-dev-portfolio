@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Future Projects | SR.DEV</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="inner.css">
+<link rel="stylesheet" href="future-projects.css">
+</head>
+<body data-page="future-projects" data-back="projects.html">
+
+  <main class="wrap">
+
+    <div class="sec-title">
+      <small>What's coming next</small>
+      <h1>FEATURED PROJECTS</h1>
+      <div class="underline"></div>
+    </div>
+
+    <div class="filters">
+      <button class="f-btn press active" data-filter="all">All</button>
+      <button class="f-btn press" data-filter="web">Web</button>
+      <button class="f-btn press" data-filter="game">Game</button>
+      <button class="f-btn press" data-filter="tool">Tools</button>
+    </div>
+
+    <section class="f-grid">
+
+      <article class="f-card panel" data-cat="web">
+        <div class="f-img art" style="--img:url('img/f1.jpg'); --fallback:linear-gradient(160deg,#052a4a,#12063a)"><span class="badge">Web</span></div>
+        <div class="f-body">
+          <h3>NeonBoard</h3>
+          <p>A live dashboard website with charts and a cyberpunk look.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="links"><a class="press" href="#">Demo</a><a class="press" href="#">Code</a></div>
+        </div>
+      </article>
+
+      <article class="f-card panel" data-cat="game">
+        <div class="f-img art" style="--img:url('img/f2.jpg'); --fallback:linear-gradient(160deg,#0d3b1e,#2a0a52)"><span class="badge">Game</span></div>
+        <div class="f-body">
+          <h3>BlockQuest</h3>
+          <p>A Minecraft-style adventure mod with new worlds and portals.</p>
+          <div class="tags"><span>Java</span><span>Minecraft</span></div>
+          <div class="links"><a class="press" href="#">Demo</a><a class="press" href="#">Code</a></div>
+        </div>
+      </article>
+
+      <article class="f-card panel" data-cat="tool">
+        <div class="f-img art" style="--img:url('img/f3.jpg'); --fallback:linear-gradient(160deg,#3a0a5c,#0a1450)"><span class="badge">Tools</span></div>
+        <div class="f-body">
+          <h3>CodeSnap</h3>
+          <p>A small tool to turn code into beautiful shareable images.</p>
+          <div class="tags"><span>Python</span><span>Pillow</span></div>
+          <div class="links"><a class="press" href="#">Demo</a><a class="press" href="#">Code</a></div>
+        </div>
+      </article>
+
+      <article class="f-card panel" data-cat="web">
+        <div class="f-img art" style="--img:url('img/f4.jpg'); --fallback:linear-gradient(160deg,#06304a,#200a4a)"><span class="badge">Web</span></div>
+        <div class="f-body">
+          <h3>StoryHub</h3>
+          <p>A website where I will publish my stories and lessons.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <div class="links"><a class="press" href="#">Demo</a><a class="press" href="#">Code</a></div>
+        </div>
+      </article>
+
+      <article class="f-card panel" data-cat="game">
+        <div class="f-img art" style="--img:url('img/f5.jpg'); --fallback:linear-gradient(160deg,#1a0b4a,#0a2a5c)"><span class="badge">Game</span></div>
+        <div class="f-body">
+          <h3>PixelRun</h3>
+          <p>A fast 2D browser game with neon levels and high scores.</p>
+          <div class="tags"><span>JS</span><span>Canvas</span></div>
+          <div class="links"><a class="press" href="#">Demo</a><a class="press" href="#">Code</a></div>
+        </div>
+      </article>
+
+      <article class="f-card panel" data-cat="tool">
+        <div class="f-img art" style="--img:url('img/f6.jpg'); --fallback:linear-gradient(160deg,#2a0a52,#052a4a)"><span class="badge">Tools</span></div>
+        <div class="f-body">
+          <h3>TaskPilot</h3>
+          <p>A simple to-do and focus timer app for daily planning.</p>
+          <div class="tags"><span>JS</span><span>Local Storage</span></div>
+          <div class="links"><a class="press" href="#">Demo</a><a class="press" href="#">Code</a></div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <script src="common.js"></script>
+  <script>
+    // ফিল্টার বাটন
+    const buttons = document.querySelectorAll('.f-btn');
+    const cards = document.querySelectorAll('.f-card');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards.forEach(card => {
+          card.classList.toggle('hide', f !== 'all' && card.dataset.cat !== f);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

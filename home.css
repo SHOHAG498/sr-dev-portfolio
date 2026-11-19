@@ -1,0 +1,537 @@
+:root {
+  --cyan: #19d3ff;
+  --purple: #b537ff;
+  --pink: #ff3df2;
+  --bg: #04020d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(120, 40, 255, 0.35), transparent 55%),
+    radial-gradient(ellipse at 100% 20%, rgba(25, 211, 255, 0.18), transparent 50%),
+    radial-gradient(ellipse at 0% 60%, rgba(181, 55, 255, 0.15), transparent 50%);
+  background-attachment: fixed;
+  color: #e8ecff;
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+/* সার্কিট গ্রিড */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(25, 211, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 211, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: linear-gradient(#000, transparent 85%);
+  mask-image: linear-gradient(#000, transparent 85%);
+}
+
+svg.i {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ===== মাউসের আলো ===== */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(140, 90, 255, 0.28), rgba(25, 211, 255, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.cursor-glow.visible {
+  opacity: 1;
+}
+
+/* ===== পেজের কাঠামো ===== */
+.page {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 170px;
+}
+
+/* ===== সাইডবার ===== */
+.sidebar {
+  position: fixed;
+  z-index: 5;
+  left: 14px;
+  top: 120px;
+  bottom: 70px;
+  width: 140px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: rgba(8, 10, 30, 0.7);
+  border: 1px solid rgba(25, 211, 255, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 0 22px rgba(25, 211, 255, 0.2), inset 0 0 20px rgba(181, 55, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.side-logo {
+  width: 90px;
+  height: 56px;
+}
+
+.sidebar h3 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.sidebar h3 span,
+.brand-name span,
+.hero-title span {
+  color: var(--purple);
+}
+
+.role {
+  font-size: 0.95rem;
+  color: #9aa3c4;
+  margin-top: -8px;
+}
+
+.line {
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  margin: 4px 0;
+}
+
+.social {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border: 1.5px solid var(--cyan);
+  border-radius: 14px;
+  background: rgba(25, 211, 255, 0.08);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.social.red {
+  color: #ff3b3b;
+  border-color: #ff3b3b;
+  background: rgba(255, 59, 59, 0.1);
+}
+
+.social.blue {
+  color: #7b8cff;
+  border-color: #7b8cff;
+  background: rgba(123, 140, 255, 0.12);
+}
+
+.social:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 0 18px currentColor;
+}
+
+.social:active {
+  transform: translateY(4px) scale(0.92);
+  box-shadow: 0 0 8px currentColor;
+  transition: transform 80ms ease;
+}
+
+.motto {
+  margin-top: auto;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #d6d9e0;
+}
+
+.motto b {
+  color: var(--pink);
+}
+
+.motto em {
+  font-style: normal;
+  color: #8fa0ff;
+}
+
+/* ===== উপরের বার ===== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 28px 0 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 86px;
+  height: 52px;
+}
+
+.brand-name {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  font-style: italic;
+  color: #fff;
+  line-height: 1;
+}
+
+.brand-tag {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: #aab0c0;
+}
+
+.nav {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  background: rgba(8, 10, 30, 0.65);
+  border: 1px solid rgba(181, 55, 255, 0.35);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(181, 55, 255, 0.18);
+}
+
+.nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 82px;
+  padding: 8px 12px;
+  color: #d6d9e0;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 12px;
+  border-bottom: 2px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 200ms ease, background 200ms ease, transform 150ms ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--cyan);
+  background: rgba(25, 211, 255, 0.1);
+  border-bottom-color: var(--cyan);
+}
+
+.nav a:active {
+  transform: translateY(3px) scale(0.95);
+  transition: transform 80ms ease;
+}
+
+/* ===== মাঝের লোগো ===== */
+.hero {
+  text-align: center;
+  padding: 0 20px;
+  margin-top: -6px;
+}
+
+.hero-logo {
+  width: 340px;
+  height: 204px;
+  filter: drop-shadow(0 0 18px rgba(25, 211, 255, 0.7)) drop-shadow(0 0 40px rgba(181, 55, 255, 0.5));
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-title {
+  margin-top: -14px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(181, 55, 255, 0.6);
+}
+
+.hero-slogan {
+  margin-top: 6px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #e8ecff;
+}
+
+.hero-slogan span {
+  color: var(--cyan);
+}
+
+/* ===== কার্ড ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  padding: 26px 28px 30px 10px;
+}
+
+.card {
+  --c: var(--cyan);
+  --g: rgba(25, 211, 255, 0.5);
+  position: relative;
+  overflow: hidden;                      /* ঢেউ কার্ডের বাইরে যাবে না */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 22px 16px 18px;
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid var(--c);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(10, 16, 44, 0.92), rgba(8, 6, 26, 0.96));
+  box-shadow: 0 0 18px var(--g), inset 0 0 24px rgba(0, 0, 0, 0.5);
+  -webkit-tap-highlight-color: transparent;
+
+  /* backwards: শুধু শুরুতে কাজ করবে, শেষে hover/প্রেসের ইফেক্ট আটকাবে না */
+  animation: rise 700ms ease backwards;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.card.purple {
+  --c: var(--purple);
+  --g: rgba(181, 55, 255, 0.55);
+}
+
+.c1 { animation-delay: 0.1s; }
+.c2 { animation-delay: 0.2s; }
+.c3 { animation-delay: 0.3s; }
+.c4 { animation-delay: 0.4s; }
+.c5 { animation-delay: 0.5s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 34px var(--g), 0 0 70px var(--g), inset 0 0 24px rgba(0, 0, 0, 0.5);
+}
+
+/* প্রেস করলে নিচে দেবে যাবে, ছাড়লে আবার উঠবে */
+.card:active {
+  transform: translateY(6px) scale(0.97);
+  box-shadow: 0 0 10px var(--g), inset 0 0 30px rgba(0, 0, 0, 0.7);
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+
+.card-icon {
+  width: 46px;
+  height: 46px;
+  fill: none;
+  stroke: var(--c);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 8px var(--c));
+}
+
+.card h2 {
+  margin-top: 10px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.card p {
+  margin-top: 4px;
+  font-size: 1.05rem;
+  color: #d6d9e0;
+}
+
+/* ছবির জায়গা: ছবি না থাকলে গ্রেডিয়েন্ট দেখাবে */
+.art {
+  --img: none;
+  --fallback: linear-gradient(160deg, #1a0b4a, #0a2a5c 60%, #2a0a52);
+  width: 100%;
+  flex: 1;
+  min-height: 210px;
+  margin: 16px 0;
+  border-radius: 14px;
+  background: var(--img) center / cover no-repeat, var(--fallback);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.c2 .art { --fallback: linear-gradient(160deg, #0d3b1e, #2a0a52 70%); }
+.c3 .art { --fallback: linear-gradient(160deg, #052a4a, #12063a 70%); }
+.c4 .art { --fallback: linear-gradient(160deg, #3a0a5c, #0a1450 70%); }
+.c5 .art { --fallback: linear-gradient(160deg, #06304a, #200a4a 70%); }
+
+.go {
+  width: 100%;
+  padding: 11px 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  border: 2px solid var(--c);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 12px var(--g);
+  transition: transform 150ms ease, background 200ms ease, color 200ms ease;
+}
+
+.card:hover .go {
+  background: var(--c);
+  color: #04020d;
+}
+
+.card:active .go {
+  transform: translateY(4px) scale(0.95);
+  transition: transform 80ms ease;
+}
+
+/* ===== ঢেউ অ্যানিমেশন ===== */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), var(--c) 70%);
+  opacity: 0.55;
+  transform: scale(0);
+  animation: ripple-anim 650ms ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-anim {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* ===== নিচের স্ট্যাটাস বার ===== */
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: auto 28px 18px 10px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  color: #aab0c0;
+  background: rgba(8, 10, 30, 0.7);
+  border: 1px solid rgba(25, 211, 255, 0.25);
+  border-radius: 14px;
+}
+
+.online {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  color: #35e08a;
+  background: rgba(53, 224, 138, 0.1);
+  border-radius: 8px;
+}
+
+.online i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #35e08a;
+  box-shadow: 0 0 10px #35e08a;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.35; }
+}
+
+.spark {
+  font-size: 1.6rem;
+  color: var(--cyan);
+  text-shadow: 0 0 12px var(--cyan);
+}
+
+.made b {
+  color: #ff3b5c;
+}
+
+/* ===== রেসপনসিভ ===== */
+@media (max-width: 1250px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 950px) {
+  .page { padding-left: 0; }
+  .sidebar { display: none; }
+  .topbar { padding: 16px 16px 0; }
+  .cards { padding: 24px 16px; grid-template-columns: repeat(2, 1fr); }
+  .status { margin: auto 16px 16px; }
+  .nav a { min-width: 56px; }
+  .nav span { display: none; }
+}
+
+@media (max-width: 600px) {
+  .brand-tag { display: none; }
+  .brand-name { font-size: 1.3rem; }
+  .brand-logo { width: 64px; height: 40px; }
+  .hero-logo { width: 240px; height: 144px; }
+  .hero-title { font-size: 2rem; }
+  .hero-slogan { font-size: 1rem; letter-spacing: 2px; }
+  .cards { grid-template-columns: 1fr; }
+  .cursor-glow { width: 260px; height: 260px; }
+  .status { flex-wrap: wrap; justify-content: center; }
+  .spark { display: none; }
+}
+
+/* Mobile navigation fix for the Home page */
+@media (max-width: 900px) {
+  .topbar { flex-direction: column; align-items: stretch; gap: 10px; padding: 10px 12px; }
+  .brand { justify-content: center; }
+  .brand-tag { display: none; }
+  .nav { width: 100%; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 3px; padding: 4px; }
+  .nav a { min-width: 0; padding: 6px 2px; gap: 3px; }
+  .nav a svg { width: 19px; height: 19px; }
+  .nav span { display: block; white-space: nowrap; font-size: clamp(8px,2.3vw,11px); }
+}
+@media (max-width: 380px) {
+  .nav { gap: 1px; }
+  .nav a { padding-left: 0; padding-right: 0; }
+  .nav a svg { width: 17px; height: 17px; }
+  .nav span { font-size: 8px; letter-spacing: -.2px; }
+}

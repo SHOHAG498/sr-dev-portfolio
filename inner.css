@@ -1,0 +1,198 @@
+:root {
+  --cyan: #19d3ff;
+  --purple: #b537ff;
+  --pink: #ff3df2;
+  --bg: #04020d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(120, 40, 255, 0.35), transparent 55%),
+    radial-gradient(ellipse at 100% 30%, rgba(25, 211, 255, 0.16), transparent 50%),
+    radial-gradient(ellipse at 0% 70%, rgba(181, 55, 255, 0.14), transparent 50%);
+  background-attachment: fixed;
+  color: #e8ecff;
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(25, 211, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 211, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: linear-gradient(#000, transparent 85%);
+  mask-image: linear-gradient(#000, transparent 85%);
+}
+
+svg.i {
+  width: 24px; height: 24px;
+  fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ===== মাউসের আলো ===== */
+.cursor-glow {
+  position: fixed; top: 0; left: 0;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(140, 90, 255, 0.28), rgba(25, 211, 255, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.cursor-glow.visible { opacity: 1; }
+
+/* ===== উপরের বার ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; justify-content: space-between; align-items: center; gap: 20px;
+  padding: 12px 28px;
+  background: rgba(4, 2, 13, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(25, 211, 255, 0.18);
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand-logo { width: 86px; height: 52px; }
+.brand-name {
+  font-family: "Orbitron", sans-serif; font-size: 1.6rem; font-weight: 800;
+  font-style: italic; color: #fff; line-height: 1;
+}
+.brand-name span { color: var(--purple); }
+.brand-tag { margin-top: 6px; font-size: 0.7rem; letter-spacing: 2px; color: #aab0c0; }
+
+.nav {
+  display: flex; gap: 6px; padding: 6px;
+  background: rgba(8, 10, 30, 0.65);
+  border: 1px solid rgba(181, 55, 255, 0.35);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(181, 55, 255, 0.18);
+}
+.nav a {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  min-width: 80px; padding: 7px 12px;
+  color: #d6d9e0; text-decoration: none; font-weight: 600;
+  border-radius: 12px; border-bottom: 2px solid transparent;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 200ms, background 200ms, transform 150ms;
+}
+.nav a:hover, .nav a.active {
+  color: var(--cyan); background: rgba(25, 211, 255, 0.1); border-bottom-color: var(--cyan);
+}
+.nav a:active { transform: translateY(3px) scale(0.95); transition: transform 80ms; }
+
+/* ===== Back বাটন ===== */
+.back-btn {
+  position: fixed; top: 96px; left: 20px; z-index: 15;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 22px;
+  color: #fff; text-decoration: none; font-weight: 700; font-size: 1.05rem;
+  border: 1.5px solid var(--cyan); border-radius: 999px;
+  background: rgba(25, 211, 255, 0.1);
+  box-shadow: 0 0 14px rgba(25, 211, 255, 0.35);
+  backdrop-filter: blur(8px);
+  transition: transform 150ms, box-shadow 200ms, background 200ms;
+}
+.back-btn:hover { background: rgba(25, 211, 255, 0.25); box-shadow: 0 0 24px rgba(25, 211, 255, 0.7); transform: translateX(-4px); }
+.back-btn:active { transform: translateX(-4px) translateY(4px) scale(0.94); transition: transform 80ms; }
+
+/* ===== কমন ===== */
+.wrap { position: relative; z-index: 2; max-width: 1120px; margin: 0 auto; padding: 40px 20px 80px; }
+
+.sec-title { text-align: center; margin: 10px 0 36px; }
+.sec-title small {
+  display: block; font-family: "Orbitron", sans-serif; font-style: italic;
+  font-size: 1.2rem; color: var(--purple); text-shadow: 0 0 14px rgba(181, 55, 255, 0.8);
+  margin-bottom: -6px;
+}
+.sec-title h1 {
+  font-family: "Orbitron", sans-serif; font-size: 3rem; font-weight: 800;
+  background: linear-gradient(90deg, var(--cyan), #fff, var(--pink));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 14px rgba(25, 211, 255, 0.45));
+}
+
+.panel {
+  border: 1.5px solid rgba(25, 211, 255, 0.35);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(10, 16, 44, 0.9), rgba(8, 6, 26, 0.95));
+  box-shadow: 0 0 22px rgba(25, 211, 255, 0.18), inset 0 0 26px rgba(0, 0, 0, 0.5);
+}
+
+/* ছবির জায়গা: ছবি না থাকলে গ্রেডিয়েন্ট দেখাবে */
+.art {
+  --img: none;
+  --fallback: linear-gradient(160deg, #1a0b4a, #0a2a5c 60%, #2a0a52);
+  background: var(--img) center / cover no-repeat, var(--fallback);
+}
+
+/* বাটন প্রেস ও ঢেউ */
+.press {
+  position: relative; overflow: hidden; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.press:active { transform: translateY(4px) scale(0.95); transition: transform 80ms ease; }
+
+.ripple {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), var(--cyan) 70%);
+  opacity: 0.55; transform: scale(0);
+  animation: ripple-anim 650ms ease-out; pointer-events: none;
+}
+@keyframes ripple-anim { to { transform: scale(1); opacity: 0; } }
+
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 1300px) {
+  .back-btn { position: static; margin: 16px 0 0 16px; }
+}
+@media (max-width: 800px) {
+  .topbar { padding: 10px 14px; }
+  .brand-tag { display: none; }
+  .brand-logo { width: 60px; height: 38px; }
+  .brand-name { font-size: 1.2rem; }
+  .nav a { min-width: 46px; padding: 7px 8px; }
+  .nav span { display: none; }
+  .sec-title h1 { font-size: 2.1rem; }
+  .cursor-glow { width: 260px; height: 260px; }
+}
+
+/* SR.DEV navigation and mobile layout fixes */
+.topbar { min-width: 0; }
+.brand { flex: 0 0 auto; min-width: 0; }
+.brand-copy { display: flex; flex-direction: column; min-width: 0; }
+.nav { flex: 0 1 auto; min-width: 0; }
+.nav a { min-width: 68px; }
+.back-btn { cursor: pointer; font-family: inherit; }
+.back-btn:active { transform: translateX(-3px) translateY(3px) scale(.96); }
+@media (max-width: 900px) {
+  .topbar { flex-direction: column; align-items: stretch; gap: 10px; padding: 10px 12px; }
+  .brand { justify-content: center; }
+  .brand-logo { width: 52px; height: 34px; }
+  .brand-name { font-size: 1.15rem; }
+  .brand-tag { display: none; }
+  .nav { width: 100%; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 3px; padding: 4px; }
+  .nav a { min-width: 0; padding: 6px 2px; gap: 3px; font-size: .78rem; }
+  .nav a svg { width: 19px; height: 19px; }
+  .nav span { display: block; white-space: nowrap; font-size: clamp(8px,2.3vw,11px); }
+  .back-btn { margin: 10px 12px 0; padding: 8px 14px; width: fit-content; }
+  .wrap { padding: 26px 14px 60px; }
+}
+@media (max-width: 380px) {
+  .nav { gap: 1px; }
+  .nav a { padding-left: 0; padding-right: 0; }
+  .nav a svg { width: 17px; height: 17px; }
+  .nav span { font-size: 8px; letter-spacing: -.2px; }
+}

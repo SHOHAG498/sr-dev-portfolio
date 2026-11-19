@@ -1,0 +1,98 @@
+.about-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 36px 30px;
+  animation: rise 700ms ease backwards;
+}
+
+.a-left, .a-right { text-align: center; }
+.a-left p, .a-right p { font-size: 1.15rem; line-height: 1.6; color: #cfd3e6; }
+.a-left strong, .a-right strong { color: #fff; }
+
+.a-name {
+  font-family: "Orbitron", sans-serif; font-size: 1.2rem; letter-spacing: 1px;
+  color: var(--cyan); text-shadow: 0 0 12px rgba(25, 211, 255, 0.7);
+  margin-bottom: 18px;
+}
+
+.stats { display: flex; justify-content: center; align-items: flex-end; gap: 12px; margin-bottom: 16px; }
+.stats i { font-style: normal; color: #667; font-size: 2rem; }
+.stats div, .stat-small { display: flex; flex-direction: column; align-items: center; }
+.stats b, .stat-small b {
+  font-family: "Orbitron", sans-serif; font-size: 2.6rem; font-weight: 800;
+  color: var(--purple); text-shadow: 0 0 16px rgba(181, 55, 255, 0.8); line-height: 1;
+}
+.stats span, .stat-small span { font-size: 0.95rem; letter-spacing: 2px; color: #fff; }
+.stat-small { margin-top: 20px; }
+
+.photo {
+  height: 360px;
+  border-radius: 20px;
+  border: 2px solid var(--purple);
+  box-shadow: 0 0 28px rgba(181, 55, 255, 0.5), inset 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.a-right {
+  padding: 24px 20px;
+  border: 1px solid rgba(25, 211, 255, 0.25);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.play {
+  width: 70px; height: 70px; margin-bottom: 18px;
+  font-size: 1.6rem; color: #fff;
+  border: none; border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  box-shadow: 0 0 24px rgba(181, 55, 255, 0.7);
+  transition: transform 150ms, box-shadow 200ms;
+}
+.play:hover { box-shadow: 0 0 38px rgba(25, 211, 255, 0.9); transform: scale(1.08); }
+
+/* টাইমলাইন কার্ড */
+.t-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
+.t-row::before {
+  content: ""; position: absolute; top: -18px; left: 8%; right: 8%;
+  border-top: 2px dotted rgba(25, 211, 255, 0.5);
+}
+
+.t-card {
+  padding: 18px 14px;
+  border: 1.5px dashed var(--cyan);
+  border-radius: 14px;
+  background: rgba(8, 10, 30, 0.6);
+  animation: rise 700ms ease backwards;
+  transition: transform 250ms, box-shadow 250ms;
+}
+.t-card:nth-child(2) { animation-delay: .1s; } .t-card:nth-child(3) { animation-delay: .2s; }
+.t-card:nth-child(4) { animation-delay: .3s; } .t-card:nth-child(5) { animation-delay: .4s; }
+.t-card:nth-child(6) { animation-delay: .5s; }
+
+.t-card:hover { transform: translateY(-8px); box-shadow: 0 0 24px rgba(25, 211, 255, 0.5); }
+
+.t-ic {
+  display: inline-block; padding: 4px 10px; margin-bottom: 8px;
+  font-family: "Orbitron", sans-serif; font-size: 0.8rem;
+  color: #fff; border-radius: 8px; background: rgba(181, 55, 255, 0.35);
+}
+.t-card h4 {
+  font-family: "Orbitron", sans-serif; font-size: 1.5rem;
+  color: var(--cyan); text-shadow: 0 0 10px rgba(25, 211, 255, 0.7);
+}
+.t-card p { margin-top: 6px; font-size: 1rem; line-height: 1.4; color: #cfd3e6; }
+.t-card strong { color: #fff; }
+
+@media (max-width: 1000px) {
+  .about-card { grid-template-columns: 1fr; }
+  .photo { height: 320px; }
+  .t-row { grid-template-columns: repeat(2, 1fr); }
+  .t-row::before { display: none; }
+}

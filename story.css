@@ -1,0 +1,66 @@
+.story {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+/* মাঝের জ্বলজ্বলে লাইন */
+.story::before {
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 3px; transform: translateX(-50%);
+  background: linear-gradient(var(--cyan), var(--purple), var(--pink));
+  box-shadow: 0 0 14px var(--purple);
+  border-radius: 3px;
+}
+
+.chapter {
+  position: relative;
+  width: 50%;
+  padding: 0 40px 40px 0;
+  animation: rise 700ms ease backwards;
+}
+.chapter:nth-child(even) { margin-left: 50%; padding: 0 0 40px 40px; }
+.chapter:nth-child(2) { animation-delay: .15s; }
+.chapter:nth-child(3) { animation-delay: .3s; }
+.chapter:nth-child(4) { animation-delay: .45s; }
+
+.node {
+  position: absolute; top: 26px; right: -9px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0 5px rgba(25, 211, 255, 0.2), 0 0 18px var(--cyan);
+}
+.chapter:nth-child(even) .node { right: auto; left: -9px; background: var(--purple); box-shadow: 0 0 0 5px rgba(181, 55, 255, 0.2), 0 0 18px var(--purple); }
+
+.ch-card {
+  padding: 24px;
+  transition: transform 250ms, box-shadow 250ms;
+}
+.ch-card:hover { transform: translateY(-6px); box-shadow: 0 0 34px rgba(25, 211, 255, 0.45); }
+
+.year {
+  display: inline-block; padding: 3px 14px; margin-bottom: 10px;
+  font-family: "Orbitron", sans-serif; font-size: 0.9rem; color: #04020d; font-weight: 800;
+  border-radius: 999px; background: var(--cyan);
+}
+.chapter:nth-child(even) .year { background: var(--purple); color: #fff; }
+
+.ch-card h3 { font-family: "Orbitron", sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 8px; }
+.ch-card p { font-size: 1.1rem; line-height: 1.6; color: #cfd3e6; }
+
+.quote {
+  max-width: 760px; margin: 30px auto 0; padding: 30px;
+  text-align: center;
+  font-family: "Orbitron", sans-serif; font-size: 1.4rem; color: #fff;
+  border-color: var(--purple);
+  box-shadow: 0 0 30px rgba(181, 55, 255, 0.35);
+}
+.quote span { color: var(--cyan); }
+
+@media (max-width: 760px) {
+  .story::before { left: 12px; }
+  .chapter, .chapter:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 30px 40px; }
+  .node, .chapter:nth-child(even) .node { left: 3px; right: auto; }
+}
